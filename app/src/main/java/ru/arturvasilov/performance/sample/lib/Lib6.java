@@ -9,11 +9,11 @@ import ru.arturvasilov.performance.sample.utils.PerformanceUtils;
 /**
  * @author Artur Vasilov
  */
-public final class Lib1 {
+public final class Lib6 {
 
     private static volatile boolean initialized = false;
 
-    private Lib1() {
+    private Lib6() {
     }
 
     public static void init(@NonNull Context context) {
@@ -23,9 +23,9 @@ public final class Lib1 {
 
     public static void start() {
         if (!initialized) {
-            throw new IllegalStateException("You have to initialize Lib1 first");
+            throw new IllegalStateException("You have to initialize Lib6 first");
         }
-        App.getAppComponent().getLib1Class().doSomeAction();
-        PerformanceUtils.logMessage(Lib1.class.getSimpleName() + " started");
+        App.getAppComponent().getLib6Class().doSomeAction();
+        PerformanceUtils.logMessage(Lib6.class.getSimpleName() + " started");
     }
 }

@@ -5,14 +5,14 @@ import ru.arturvasilov.performance.sample.utils.PerformanceUtils;
 /**
  * @author Artur Vasilov
  */
-public class Lib1Class {
+public class Lib7Class {
 
-    public Lib1Class() {
+    public Lib7Class() {
         PerformanceUtils.sleepRandom(40, 100);
     }
 
     public void doSomeAction() {
-        PerformanceUtils.logMessage("Do some action called from Lib1Class");
+        PerformanceUtils.logMessage("Do some action called from Lib7Class");
     }
 
 }
