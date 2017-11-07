@@ -1,6 +1,7 @@
 package ru.arturvasilov.performance.sample.lib;
 
 import android.content.Context;
+import android.os.Trace;
 import android.support.annotation.NonNull;
 
 import ru.arturvasilov.performance.sample.App;
@@ -17,8 +18,10 @@ public final class Lib1 {
     }
 
     public static void init(@NonNull Context context) {
+        Trace.beginSection("Init Lib1");
         PerformanceUtils.sleepRandom(100, 200);
         initialized = true;
+        Trace.endSection();
     }
 
     public static void start() {

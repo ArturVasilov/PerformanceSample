@@ -1,5 +1,7 @@
 package ru.arturvasilov.performance.sample.lib;
 
+import android.os.Trace;
+
 import ru.arturvasilov.performance.sample.utils.PerformanceUtils;
 
 /**
@@ -8,7 +10,9 @@ import ru.arturvasilov.performance.sample.utils.PerformanceUtils;
 public class Lib1Class {
 
     public Lib1Class() {
+        Trace.beginSection("Lib1Class constructor");
         PerformanceUtils.sleepRandom(40, 100);
+        Trace.endSection();
     }
 
     public void doSomeAction() {

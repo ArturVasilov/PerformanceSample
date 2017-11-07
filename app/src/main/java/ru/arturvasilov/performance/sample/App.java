@@ -1,6 +1,7 @@
 package ru.arturvasilov.performance.sample;
 
 import android.app.Application;
+import android.os.Trace;
 import android.support.annotation.NonNull;
 
 import ru.arturvasilov.performance.sample.dagger.AppComponent;
@@ -45,8 +46,11 @@ public class App extends Application {
         super.onCreate();
         app = this;
 
+        Trace.beginSection("Init injector");
         initInjector();
+        Trace.endSection();
 
+        Trace.beginSection("Init libraries");
         Lib1.init(this);
         Lib2.init(this);
         Lib3.init(this);
@@ -57,6 +61,7 @@ public class App extends Application {
         Lib8.init(this);
         Lib9.init(this);
         Lib10.init(this);
+        Trace.endSection();
     }
 
     private void initInjector() {
