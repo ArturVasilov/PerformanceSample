@@ -1,12 +1,12 @@
 package ru.arturvasilov.performance.sample;
 
 import android.app.Application;
+import android.os.StrictMode;
 import android.os.Trace;
 import android.support.annotation.NonNull;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadFactory;
 
 import ru.arturvasilov.performance.sample.dagger.AppComponent;
 import ru.arturvasilov.performance.sample.dagger.DaggerAppComponent;
@@ -52,6 +52,8 @@ public class App extends Application {
         super.onCreate();
         app = this;
 
+        setCustomStrictMode();
+
         Trace.beginSection("Init injector");
         initInjector();
         Trace.endSection();
@@ -71,6 +73,25 @@ public class App extends Application {
         Lib3.init(this);
         Lib4.init(this);
         Trace.endSection();
+    }
+
+    private void setCustomStrictMode() {
+        if (!BuildConfig.DEBUG) {
+            return;
+        }
+
+        StrictMode.ThreadPolicy threadPolicy = new StrictMode.ThreadPolicy.Builder()
+                .detectDiskReads()
+                .detectDiskWrites()
+                .detectCustomSlowCalls()
+                .detectNetwork()
+                .detectAll()
+                .penaltyLog()
+                .penaltyDialog()
+                .penaltyFlashScreen()
+                .penaltyDeath()
+                .build();
+        StrictMode.setThreadPolicy(threadPolicy);
     }
 
     private void initInjector() {
