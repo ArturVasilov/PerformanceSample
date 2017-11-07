@@ -4,6 +4,10 @@ import android.app.Application;
 import android.os.Trace;
 import android.support.annotation.NonNull;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
+
 import ru.arturvasilov.performance.sample.dagger.AppComponent;
 import ru.arturvasilov.performance.sample.dagger.DaggerAppComponent;
 import ru.arturvasilov.performance.sample.dagger.Module1;
@@ -36,6 +40,8 @@ public class App extends Application {
 
     private AppComponent appComponent;
 
+    private ExecutorService executorService;
+
     @NonNull
     public static AppComponent getAppComponent() {
         return app.appComponent;
@@ -51,16 +57,19 @@ public class App extends Application {
         Trace.endSection();
 
         Trace.beginSection("Init libraries");
+        executorService = Executors.newFixedThreadPool(3);
+
+        executorService.execute(() -> Lib5.init(this));
+        executorService.execute(() -> Lib6.init(this));
+        executorService.execute(() -> Lib7.init(this));
+        executorService.execute(() -> Lib8.init(this));
+        executorService.execute(() -> Lib9.init(this));
+        executorService.execute(() -> Lib10.init(this));
+
         Lib1.init(this);
         Lib2.init(this);
         Lib3.init(this);
         Lib4.init(this);
-        Lib5.init(this);
-        Lib6.init(this);
-        Lib7.init(this);
-        Lib8.init(this);
-        Lib9.init(this);
-        Lib10.init(this);
         Trace.endSection();
     }
 

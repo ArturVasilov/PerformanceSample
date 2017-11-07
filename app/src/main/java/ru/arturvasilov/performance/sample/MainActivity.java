@@ -1,5 +1,6 @@
 package ru.arturvasilov.performance.sample;
 
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -21,15 +22,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Lib1.start();
-        Lib2.start();
-        Lib3.start();
-        Lib4.start();
-        Lib5.start();
-        Lib6.start();
-        Lib7.start();
-        Lib8.start();
-        Lib9.start();
-        Lib10.start();
+        Handler handler = new Handler();
+
+        handler.postDelayed(Lib1::start, 100);
+        handler.postDelayed(Lib2::start, 200);
+        handler.postDelayed(Lib3::start, 300);
+        handler.postDelayed(Lib4::start, 400);
+        handler.postDelayed(Lib5::start, 500);
+        handler.postDelayed(Lib6::start, 600);
+        handler.postDelayed(Lib7::start, 700);
+        handler.postDelayed(Lib8::start, 800);
+        handler.postDelayed(Lib9::start, 900);
+        handler.postDelayed(Lib10::start, 1000);
     }
 }
