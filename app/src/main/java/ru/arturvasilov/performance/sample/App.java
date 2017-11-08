@@ -10,6 +10,7 @@ import java.util.concurrent.Executors;
 
 import ru.arturvasilov.performance.sample.dagger.AppComponent;
 import ru.arturvasilov.performance.sample.dagger.DaggerAppComponent;
+import ru.arturvasilov.performance.sample.dagger.DependentModule;
 import ru.arturvasilov.performance.sample.dagger.Module1;
 import ru.arturvasilov.performance.sample.dagger.Module10;
 import ru.arturvasilov.performance.sample.dagger.Module2;
@@ -106,6 +107,7 @@ public class App extends Application {
                 .module8(new Module8())
                 .module9(new Module9())
                 .module10(new Module10())
+                .dependentModule(new DependentModule())
                 .build();
     }
 }

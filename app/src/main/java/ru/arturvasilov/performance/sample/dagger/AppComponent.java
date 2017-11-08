@@ -3,6 +3,7 @@ package ru.arturvasilov.performance.sample.dagger;
 import javax.inject.Singleton;
 
 import dagger.Component;
+import ru.arturvasilov.performance.sample.lib.DependentClass;
 import ru.arturvasilov.performance.sample.lib.Lib1Class;
 import ru.arturvasilov.performance.sample.lib.Lib2Class;
 import ru.arturvasilov.performance.sample.lib.Lib3Class;
@@ -28,7 +29,8 @@ import ru.arturvasilov.performance.sample.lib.Lib10Class;
         Module7.class,
         Module8.class,
         Module9.class,
-        Module10.class
+        Module10.class,
+        DependentModule.class
 })
 public interface AppComponent {
 
@@ -51,4 +53,6 @@ public interface AppComponent {
     Lib9Class getLib9Class();
 
     Lib10Class getLib10Class();
+
+    DependentClass getDependentClass();
 }
