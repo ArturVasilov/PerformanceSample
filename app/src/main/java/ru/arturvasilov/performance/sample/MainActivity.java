@@ -1,10 +1,13 @@
 package ru.arturvasilov.performance.sample;
 
-import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.view.ViewStub;
 
 import ru.arturvasilov.performance.sample.lib.Lib1;
+import ru.arturvasilov.performance.sample.lib.Lib10;
 import ru.arturvasilov.performance.sample.lib.Lib2;
 import ru.arturvasilov.performance.sample.lib.Lib3;
 import ru.arturvasilov.performance.sample.lib.Lib4;
@@ -13,7 +16,6 @@ import ru.arturvasilov.performance.sample.lib.Lib6;
 import ru.arturvasilov.performance.sample.lib.Lib7;
 import ru.arturvasilov.performance.sample.lib.Lib8;
 import ru.arturvasilov.performance.sample.lib.Lib9;
-import ru.arturvasilov.performance.sample.lib.Lib10;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,5 +36,17 @@ public class MainActivity extends AppCompatActivity {
         handler.postDelayed(Lib8::start, 800);
         handler.postDelayed(Lib9::start, 900);
         handler.postDelayed(Lib10::start, 1000);
+
+        ContextCompat.getDrawable(this, R.drawable.large_image);
+
+        /*AsyncLayoutInflater inflater = new AsyncLayoutInflater(this);
+        inflater.inflate(R.layout.complex_layout, parent, (view, resid, viewParent) -> {
+            if (viewParent != null) {
+                viewParent.addView(view);
+            }
+        });*/
+
+        ViewStub viewStub = findViewById(R.id.complex_stub);
+        viewStub.inflate();
     }
 }
